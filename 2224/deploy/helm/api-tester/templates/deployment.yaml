@@ -13,11 +13,11 @@ spec:
       {{- include "api-tester.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      # annotations: // [5] Helm 부가기능 - Helm 배포 후 이미지 변경이 없는 경우 Pod 업그레이드가 안될 수 있음.
+      # {{- with .Values.podAnnotations }}
+      # annotations:
+      #   {{- toYaml . | nindent 8 }}
+      # {{- end }}
+      annotations: // [5] Helm 부가기능 - Helm 배포 후 이미지 변경이 없는 경우 Pod 업그레이드가 안될 수 있음.
         rollme: {{ randAlphaNum 5 | quote }} // 항상 새 배포를 위해 랜덤값 적용
       labels:
         {{- include "api-tester.labels" . | nindent 8 }}
